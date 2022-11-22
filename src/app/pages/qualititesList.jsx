@@ -1,8 +1,16 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useHistory } from "react-router-dom";
 import QualitiesTable from "../components/ui/qualitiesTable";
+import axios from "axios";
 
 const QualitiesListPage = () => {
+    const [qualitites, setQualitites] = useState([]);
+
+    useEffect(async () => {
+        const { data } = await axios.get("http://localhost:4000/api/v1/quality");
+        setQualitites(data.content)
+    })
+
     const history = useHistory();
     const handleEdit = (param) => {
         console.log(param);
@@ -17,7 +25,7 @@ const QualitiesListPage = () => {
             <QualitiesTable
                 onDelete={handleDelete}
                 onEdit={handleEdit}
-                data={[]}
+                data={qualitites}
             />
         </>
     );
