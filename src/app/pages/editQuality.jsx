@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import EditForm from "../components/ui/editForm";
 
-
 const EditQualityPage = () => {
     const id = useParams().id;
     const QUALITY_END_POINT = `http://localhost:4000/api/v1/quality/${id}`;
@@ -14,8 +13,18 @@ const EditQualityPage = () => {
         setQualitity(data.content);
     }, [])
 
-    const handleSubmit = (data) => { 
-        axios.put(QUALITY_END_POINT, data).then(res => console.log(res.data.content))
+    const handleSubmit = async (data) => {
+        try {
+           await axios.put(QUALITY_END_POINT, data).then(res => console.log(res.data.content))
+        } catch (error) {
+            const expectedErrors = error.response && error.response.status >= 400 && error.response.status < 500;
+            if (!expectedErrors) {
+                console.log("Unexpected error");
+            } else {
+                console.log("Expected error");
+            }
+        }
+
      }
 
     return (
