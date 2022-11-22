@@ -9,7 +9,7 @@ const QualitiesListPage = () => {
     useEffect(async () => {
         const { data } = await axios.get("http://localhost:4000/api/v1/quality");
         setQualitites(data.content)
-    })
+    }, []);
 
     const history = useHistory();
     const handleEdit = (param) => {
