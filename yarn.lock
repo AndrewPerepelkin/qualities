@@ -1578,6 +1578,59 @@
     "estree-walker" "^1.0.1"
     "picomatch" "^2.2.2"
 
+"@sentry/browser@7.21.1":
+  "integrity" "sha512-cS2Jz2+fs9+4pJqLJPtYqGyY97ywJDWAWIR1Yla3hs1QQuH6m0Nz3ojZD1gE2eKH9mHwkGbnNAh+hHcrYrfGzw=="
+  "resolved" "https://registry.npmjs.org/@sentry/browser/-/browser-7.21.1.tgz"
+  "version" "7.21.1"
+  dependencies:
+    "@sentry/core" "7.21.1"
+    "@sentry/types" "7.21.1"
+    "@sentry/utils" "7.21.1"
+    "tslib" "^1.9.3"
+
+"@sentry/core@7.21.1":
+  "integrity" "sha512-Og5wEEsy24fNvT/T7IKjcV4EvVK5ryY2kxbJzKY6GU2eX+i+aBl+n/vp7U0Es351C/AlTkS+0NOUsp2TQQFxZA=="
+  "resolved" "https://registry.npmjs.org/@sentry/core/-/core-7.21.1.tgz"
+  "version" "7.21.1"
+  dependencies:
+    "@sentry/types" "7.21.1"
+    "@sentry/utils" "7.21.1"
+    "tslib" "^1.9.3"
+
+"@sentry/react@^7.21.1":
+  "integrity" "sha512-w91PIUyX07mErKgrBQA+7ID8zFKrYDUYSOrFSHufg5DdPq4EpHiNDe/Yngg3e9ELhtr1AbCnEvx9wlvqLi3nZQ=="
+  "resolved" "https://registry.npmjs.org/@sentry/react/-/react-7.21.1.tgz"
+  "version" "7.21.1"
+  dependencies:
+    "@sentry/browser" "7.21.1"
+    "@sentry/types" "7.21.1"
+    "@sentry/utils" "7.21.1"
+    "hoist-non-react-statics" "^3.3.2"
+    "tslib" "^1.9.3"
+
+"@sentry/tracing@^7.21.1":
+  "integrity" "sha512-b1BTPsRaNQpohzegoz59KGuBl+To651vEq0vMS4tCzSyIdxkYso3JCrjDdEqW/2MliQYANNVrUai2bmwmU9h1g=="
+  "resolved" "https://registry.npmjs.org/@sentry/tracing/-/tracing-7.21.1.tgz"
+  "version" "7.21.1"
+  dependencies:
+    "@sentry/core" "7.21.1"
+    "@sentry/types" "7.21.1"
+    "@sentry/utils" "7.21.1"
+    "tslib" "^1.9.3"
+
+"@sentry/types@7.21.1":
+  "integrity" "sha512-3/IKnd52Ol21amQvI+kz+WB76s8/LR5YvFJzMgIoI2S8d82smIr253zGijRXxHPEif8kMLX4Yt+36VzrLxg6+A=="
+  "resolved" "https://registry.npmjs.org/@sentry/types/-/types-7.21.1.tgz"
+  "version" "7.21.1"
+
+"@sentry/utils@7.21.1":
+  "integrity" "sha512-F0W0AAi8tgtTx6ApZRI2S9HbXEA9ENX1phTZgdNNWcMFm1BNbc21XEwLqwXBNjub5nlA6CE8xnjXRgdZKx4kzQ=="
+  "resolved" "https://registry.npmjs.org/@sentry/utils/-/utils-7.21.1.tgz"
+  "version" "7.21.1"
+  dependencies:
+    "@sentry/types" "7.21.1"
+    "tslib" "^1.9.3"
+
 "@sinonjs/commons@^1.7.0":
   "integrity" "sha512-sruwd86RJHdsVf/AtBoijDmUqJp3B6hF/DGC23C+JaegnDHaZyewCjoVGTdg3J0uz3Zs7NnIT05OBOmML72lQw=="
   "resolved" "https://registry.npmjs.org/@sinonjs/commons/-/commons-1.8.2.tgz"
@@ -5667,7 +5720,7 @@
     "minimalistic-assert" "^1.0.0"
     "minimalistic-crypto-utils" "^1.0.1"
 
-"hoist-non-react-statics@^3.1.0":
+"hoist-non-react-statics@^3.1.0", "hoist-non-react-statics@^3.3.2":
   "integrity" "sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw=="
   "resolved" "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz"
   "version" "3.3.2"
@@ -9491,7 +9544,7 @@
   optionalDependencies:
     "fsevents" "^2.1.3"
 
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^17.0.2", "react@>= 16", "react@>=15", "react@17.0.2":
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^17.0.2", "react@>= 16", "react@>=15", "react@15.x || 16.x || 17.x || 18.x", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -11092,6 +11145,11 @@
   "version" "1.14.1"
 
 "tslib@^1.9.0":
+  "integrity" "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+  "resolved" "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
+  "version" "1.14.1"
+
+"tslib@^1.9.3":
   "integrity" "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   "version" "1.14.1"
