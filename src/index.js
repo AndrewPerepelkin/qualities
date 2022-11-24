@@ -5,7 +5,7 @@ import App from "./app/App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import logger from "./app/services/logServices";
+import logger from "./app/services/logService";
 
 logger.init();
 
