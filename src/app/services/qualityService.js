@@ -2,12 +2,20 @@ import httpService from "./httpService";
 const qualityEndpoint = "quality/";
 
 const qualityService = {
-    get: async (id) => {
+  get: async (id) => {
   const { data } = await httpService.get(qualityEndpoint + id);
     return data;
   },
   update: async (id, content) => {
     const { data } = await httpService.put(qualityEndpoint + id, content)
+    return data;
+  },
+  create: async (id, content) => {
+    const { data } = await httpService.post(qualityEndpoint, content)
+    return data;
+  },
+  delete: async (id) => {
+    const { data } = await httpService.delete(qualityEndpoint + id)
     return data;
   },
   fetchAll: async () => {
