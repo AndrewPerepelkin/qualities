@@ -3,9 +3,11 @@ import { useParams } from "react-router-dom";
 import EditForm from "../components/ui/editForm";
 import httpServices from "../services/httpServices";
 
+
 const EditQualityPage = () => {
+    
     const id = useParams().id;
-    const QUALITY_END_POINT = `http://localhost:4000/api/v1/quality/${id}`;
+    const QUALITY_END_POINT = `quality/${id}`;
     const [quality, setQualitity] = useState(null);
 
     useEffect(async () => {

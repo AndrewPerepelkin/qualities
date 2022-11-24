@@ -7,7 +7,7 @@ const QualitiesListPage = () => {
     const [qualitites, setQualitites] = useState([]);
 
     useEffect(async () => {
-        const { data } = await httpServices.get("http://localhost:4000/api/v1/quality");
+        const { data } = await httpServices.get("quality");
         setQualitites(data.content)
     }, []);
 
