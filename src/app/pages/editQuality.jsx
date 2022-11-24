@@ -1,33 +1,46 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import EditForm from "../components/ui/editForm";
-import httpServices from "../services/httpServices";
+import { toast } from "react-toastify";
+import QualityForm from "../components/ui/qualityForm";
+import qualityService from "../services/qualityService";
 
 
 const EditQualityPage = () => {
-    
     const id = useParams().id;
-    const QUALITY_END_POINT = `quality/${id}`;
     const [quality, setQualitity] = useState(null);
 
-    useEffect(async () => {
-        const { data } = await httpServices.get(QUALITY_END_POINT);
-        setQualitity(data.content);
-    }, [])
-
-    const handleSubmit = async (data) => {
+    const getQuality = async (id) => {
         try {
-           await httpServices.put(QUALITY_END_POINT, data).then(res => console.log(res.data.content))
-        } catch (error) {
-            console.log("Expected error");
+            const data = await qualityService.get(id);
+            return data.content; 
+        } catch ({response}) {
+            toast.error(response.data.message);
         }
-     }
+    }
+    
+    const updateQuality = async (id, content) => {
+        try {
+            const data = await qualityService.update(id, content);
+            return data.content;
+        } catch (error) {
+            const { message } = error.response.data;
+            toast.error(message);
+        }
+    }
 
-    return (
-        <>
-            <h1>Edit Quality Page</h1>{" "} {quality !== null ? <EditForm data={quality} onSubmit={handleSubmit} /> : "Loading..."}
-        </>
-    );
-};
+    useEffect(() => {
+        getQuality(id).then(data => setQualitity(data));
+    }, []);
+
+    const handleSubmit = (data) => {
+        updateQuality(id, data);
+    }
+
+        return (
+            <>
+                <h1>Edit Quality Page</h1>{" "} {quality !== null ? <QualityForm data={quality} onSubmit={handleSubmit} /> : "Loading..."}
+            </>
+        );
+    };
 
 export default EditQualityPage;

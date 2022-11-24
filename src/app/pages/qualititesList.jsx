@@ -1,14 +1,23 @@
 import React, {useState, useEffect} from "react";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import QualitiesTable from "../components/ui/qualitiesTable";
-import httpServices from "../services/httpServices";
+import qualityService from "../services/qualityService";
 
 const QualitiesListPage = () => {
-    const [qualitites, setQualitites] = useState([]);
+    const [qualities, setQualities] = useState([]);
 
-    useEffect(async () => {
-        const { data } = await httpServices.get("quality");
-        setQualitites(data.content)
+    const getQualities = async () => { 
+        try {
+            const data = await qualityService.fetchAll();
+            return data.content;
+        } catch ({response}) {
+            toast.error(response.data.message);
+        }
+     }
+
+    useEffect(() => {
+        getQualities().then(data => setQualities(data));        
     }, []);
 
     const history = useHistory();
@@ -20,11 +29,11 @@ const QualitiesListPage = () => {
     };
     return (
         <>
-            <h1>Qualitites List Page</h1>
+            <h1>Qualities List Page</h1>
             <QualitiesTable
                 onDelete={handleDelete}
                 onEdit={handleEdit}
-                data={qualitites}
+                data={qualities}
             />
         </>
     );
