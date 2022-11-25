@@ -8,7 +8,7 @@ export const useQualities = () => useContext(QualitiesContext);
 
 export const QualitiesProvider = ({ children }) => {
   const [qualities, setQualities] = useState([]);
-  const [, setError] = useState(null);
+  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const getQualities = async () => { 
@@ -17,7 +17,7 @@ export const QualitiesProvider = ({ children }) => {
         setQualities(content);
         setIsLoading(false);
       } catch (error) {
-        errorCatching(error);
+        errorCatcher(error);
       }
     }
     getQualities();
@@ -31,7 +31,7 @@ export const QualitiesProvider = ({ children }) => {
       setQualities(prevState => prevState.map(q => q._id === content._id ? content : q))
       return content;
     } catch (error) {
-      errorCatching(error);
+      errorCatcher(error);
     }
   };
 
@@ -41,17 +41,31 @@ export const QualitiesProvider = ({ children }) => {
       setQualities(prevState => [...prevState, content])
       return content;
     } catch (error) {
-      errorCatching(error);
+      errorCatcher(error);
     }
   };
 
-  const errorCatching = (error) => {
+  const deleteQuality = async (id) => {
+    try {
+      const { content } = await qualityService.delete(id);
+      setQualities(prevState => prevState.filter(q => q._id !== content._id))
+      return content;
+    } catch (error) {
+      errorCatcher(error);
+    }
+  };
+
+  const errorCatcher = (error) => {
     const {message} = error.response.data;
     setError(message);
-    toast.error(message);
-   }
+  } 
+    
+  useEffect(() => {
+    toast.error(error);
+    setError(null);
+  }, [error])
 
- return <QualitiesContext.Provider value={{qualities, getQuality, updateQuality, addQuality}}>
+ return <QualitiesContext.Provider value={{qualities, getQuality, updateQuality, addQuality, deleteQuality}}>
           {!isLoading ? children : <h1>Qualities loading...</h1>}
         </QualitiesContext.Provider>
 };

@@ -4,15 +4,15 @@ import QualitiesTable from "../components/ui/qualitiesTable";
 import { useQualities } from "../hooks/useQualities";
 
 const QualitiesListPage = () => {
-    const { qualities } = useQualities();
+    const { qualities, deleteQuality } = useQualities();
     
     const history = useHistory();
     const handleEdit = (param) => {
         history.push(`/edit/${param}`);
     };
 
-    const handleDelete = (param) => {
-        console.log(param);
+    const handleDelete = (id) => {
+        deleteQuality(id);
     };
 
     return (
