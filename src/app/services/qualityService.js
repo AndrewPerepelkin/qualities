@@ -10,7 +10,7 @@ const qualityService = {
     const { data } = await httpService.put(qualityEndpoint + id, content)
     return data;
   },
-  create: async (id, content) => {
+  create: async (content) => {
     const { data } = await httpService.post(qualityEndpoint, content)
     return data;
   },

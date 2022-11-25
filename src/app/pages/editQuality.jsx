@@ -7,11 +7,10 @@ const EditQualityPage = () => {
     const id = useParams().id;
     const history = useHistory();
     const { getQuality, updateQuality } = useQualities();
-    const quality = getQuality(id);       
+    const quality = getQuality(id);     
 
     const handleSubmit = (data) => {
-        updateQuality(data);
-        history.push("/");
+        updateQuality(data).then(data => { if (data) history.push("/") })        
     }
 
         return (
